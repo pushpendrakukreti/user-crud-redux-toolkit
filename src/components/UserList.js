@@ -129,7 +129,7 @@ const UserList = () => {
                                                 }
                                             </td>
                                             <td>{isEdit == user.id ? <input type='textbox' className='form-control' id={user.id} name="company" onChange={(e) => handleUser(e)} value={user.company.name} /> : user.company.name}</td>
-                                            <td>{isEdit == user.id ? <input type='textbox' className='form-control' id={user.id} name="website" onChange={(e) => handleUser(e)} value={user.website} /> : <a href={"https://" + user.website}>{user.website}</a>}</td>
+                                            <td>{isEdit == user.id ? <input type='textbox' className='form-control' id={user.id} name="website" onChange={(e) => handleUser(e)} value={user.website} /> : <a href={"https://" + user.website} target='_blank' rel="noopener noreferrer">{user.website}</a>}</td>
                                             <td>
                                                 <button
                                                     onClick={(e) =>
