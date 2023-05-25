@@ -36,11 +36,11 @@ code {
   background-color: white !important;
 }
 
-.tblCity td{
+.tblCity td {
   padding: 0.2% !important;
 }
 
-.tblCity th{
+.tblCity th {
   padding-top: 0% !important;
   padding-bottom: 0% !important;
 }
@@ -69,4 +69,48 @@ code {
 
 .tblCity thead {
   z-index: 0 !important;
+}
+
+.tblTodo {
+  width: 60vw !important;
+}
+
+.tblTodo th:first-child,
+.tblTodo th:nth-child(3) {
+  width: 15% !important;
+}
+
+.tblTodo th:nth-child(2) {
+  width: 40% !important;
+}
+
+.tblTodo th:nth-child(4) {
+  width: 12% !important;
+}
+
+.tblPhotos {
+  width: 70vw !important;
+}
+
+.tblPhotos th:first-child {
+  width: 7% !important;
+}
+
+.tblPhotos th:nth-child(2),
+.tblPhotos th:nth-child(3),
+.tblPhotos th:nth-child(4) {
+  width: 22% !important;
+}
+
+.tblAlbums {
+  width: 50vw !important;
+}
+
+.tblAlbums th:first-child,
+.tblAlbums th:nth-child(3) {
+  width: 15% !important;
+}
+
+.tblAlbums th:nth-child(2) {
+  width: 45% !important;
 }

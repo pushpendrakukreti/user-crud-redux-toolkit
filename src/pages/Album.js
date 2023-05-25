@@ -1,9 +1,10 @@
 import React from 'react'
+import Albums from '../components/Albums'
 
 const Album = () => {
   return (
     <div>
-        <h2>Album</h2>
+      <Albums />
     </div>
   )
 }

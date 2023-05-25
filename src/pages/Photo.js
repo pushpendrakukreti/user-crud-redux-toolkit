@@ -1,9 +1,10 @@
 import React from 'react'
+import Photos from '../components/Photos'
 
 const Photo = () => {
   return (
     <div>
-        <h2>Photo</h2>
+      <Photos />
     </div>
   )
 }

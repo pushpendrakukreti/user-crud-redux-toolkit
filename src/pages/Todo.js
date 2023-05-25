@@ -1,9 +1,10 @@
 import React from 'react'
+import Todos from '../components/Todo'
 
 const Todo = () => {
   return (
     <div>
-        <h2>Todo</h2>
+      <Todos />
     </div>
   )
 }
