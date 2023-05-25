@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAlbums, STATUSES, getAlbumArr } from '../store/albumSlice';
+import { setAlbums, setStatus, getAlbumArr, getStatusArr } from '../store/albumSlice';
+import { STATUSES } from '../components/Enums';
+import Loader from './Loader';
 
 const Albums = () => {
     const dispatch = useDispatch();
     const albums = useSelector(getAlbumArr);
+    const status = useSelector(getStatusArr);
     const [isEdit, setIsEdit] = useState(-1);
 
     useEffect(() => {
@@ -12,11 +15,12 @@ const Albums = () => {
     }, [])
 
     const fnGetAlbums = async () => {
+        dispatch(setStatus(STATUSES.LOADING));
         const res = await fetch("https://jsonplaceholder.typicode.com/albums");
         const data = await res.json();
-        const min_data = data.filter((elem) => elem.id < 50);
-        console.log('LOG DATA 1', data);
-        dispatch(setAlbums(min_data));
+        // const min_data = data.filter((elem) => elem.id < 50);
+        dispatch(setAlbums(data));
+        dispatch(setStatus(STATUSES.IDLE));
     }
 
     const handleUser = async (event) => {
@@ -39,6 +43,14 @@ const Albums = () => {
         else {
             setIsEdit(-1);
         }
+    }
+
+    if (status === STATUSES.LOADING) {
+        return <Loader />
+    }
+
+    if (status === STATUSES.ERROR) {
+        return <h2 className='text-danger'>Something went wrong...</h2>
     }
 
     return (

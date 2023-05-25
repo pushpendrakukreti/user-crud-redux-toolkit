@@ -127,3 +127,21 @@ code {
   text-decoration: none !important;
   color: #ffc107 !important;
 }
+
+.loader-spin {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 20%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.loader-spin span {
+  margin-right: 2%;
+}
+
+.loader-spin h2 {
+  font-weight: 100;
+  color: white;
+}

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { STATUSES } from "./userSlice";
+import { STATUSES } from "../components/Enums";
 
 const albumSlice = createSlice({
     name: 'albums',
@@ -20,5 +20,8 @@ const albumSlice = createSlice({
 export const { setAlbums, setStatus } = albumSlice.actions;
 export const getAlbumArr = (state) =>{
     return state.albums.data
+}
+export const getStatusArr = (state) =>{
+    return state.albums.status
 }
 export default albumSlice.reducer;

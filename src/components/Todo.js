@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTodo, STATUSES, getTodoArr } from '../store/todoSlice';
+import { setTodo, setStatus, getTodoArr, getStatusArr } from '../store/todoSlice';
+import { STATUSES } from '../components/Enums';
+import Loader from './Loader';
 
 const Todo = () => {
     const dispatch = useDispatch();
     const todo = useSelector(getTodoArr);
+    const status = useSelector(getStatusArr);
     const [isEdit, setIsEdit] = useState(-1);
     const [selected, setSelect] = useState(false);
 
@@ -13,10 +16,11 @@ const Todo = () => {
     }, [])
 
     const fnGetTodoList = async () => {
+        dispatch(setStatus(STATUSES.LOADING));
         const res = await fetch("https://jsonplaceholder.typicode.com/todos");
         const data = await res.json();
         dispatch(setTodo(data));
-        console.log('LOG DATA 1', data);
+        dispatch(setStatus(STATUSES.IDLE));
     }
 
     const handleUser = async (event) => {
@@ -24,7 +28,7 @@ const Todo = () => {
         console.log('COMPLETE: ', name, id, value);
         const updatedTodo = await todo?.map((todos) => {
             if (todos.id == id) {
-                const userTemp = {...todos};
+                const userTemp = { ...todos };
                 console.log('Completed: ', userTemp[name], value);
                 userTemp[name] = value;
                 return userTemp;
@@ -40,10 +44,18 @@ const Todo = () => {
             setSelect(todoVal.completed);
         }
         else {
-            console.log('final todo: ',todo);
+            console.log('final todo: ', todo);
             // dispatch(setTodo(todo));
             setIsEdit(-1);
         }
+    }
+
+    if (status === STATUSES.LOADING) {
+        return <Loader />
+    }
+
+    if (status === STATUSES.ERROR) {
+        return <h2 className='text-danger'>Something went wrong...</h2>
     }
 
     return (

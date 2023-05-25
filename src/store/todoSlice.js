@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { STATUSES } from "./userSlice";
+import { STATUSES } from "../components/Enums";
 
 const todoSlice = createSlice({
     name: 'todo',
@@ -20,5 +20,8 @@ const todoSlice = createSlice({
 export const { setTodo, setStatus } = todoSlice.actions;
 export const getTodoArr = (state) =>{
     return state.todo.data
+}
+export const getStatusArr = (state) =>{
+    return state.todo.status
 }
 export default todoSlice.reducer;

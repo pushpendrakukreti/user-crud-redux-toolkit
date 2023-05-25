@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export const STATUSES = Object.freeze({
-    IDLE: 'idle',
-    ERROR: 'error',
-    LOADING: 'loading'
-});
+import { STATUSES } from "../components/Enums";
 
 const userSlice = createSlice({
     name: 'user',
@@ -25,5 +20,8 @@ const userSlice = createSlice({
 export const { setUsers, setStatus } = userSlice.actions;
 export const getUserArr = (state) =>{
     return state.user.data
+}
+export const getStatusArr = (state) =>{
+    return state.user.status
 }
 export default userSlice.reducer;

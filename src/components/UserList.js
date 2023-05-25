@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsers, STATUSES, getUserArr } from '../store/userSlice';
+import { setUsers, getUserArr, getStatusArr, setStatus } from '../store/userSlice';
+import { STATUSES } from '../components/Enums';
+import Loader from './Loader';
 
 const UserList = () => {
     const dispatch = useDispatch();
     const users = useSelector(getUserArr);
+    const status = useSelector(getStatusArr);
     const [isEdit, setIsEdit] = useState(-1);
     const [options, setOptions] = useState([]);
     const [selected, setSelect] = useState();
@@ -14,9 +17,11 @@ const UserList = () => {
     }, [])
 
     const fnGetUsers = async () => {
+        dispatch(setStatus(STATUSES.LOADING));
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
         dispatch(setUsers(data));
+        dispatch(setStatus(STATUSES.IDLE));
         setOptions(data);
     }
 
@@ -55,6 +60,14 @@ const UserList = () => {
             dispatch(setUsers(users));
             setIsEdit(-1);
         }
+    }
+
+    if (status === STATUSES.LOADING) {
+        return <Loader />
+    }
+
+    if (status === STATUSES.ERROR) {
+        return <h2 className='text-danger'>Something went wrong...</h2>
     }
 
     return (
