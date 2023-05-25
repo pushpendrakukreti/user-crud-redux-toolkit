@@ -19,7 +19,7 @@ code {
 .userHead {
   z-index: 1;
   position: sticky !important;
-  top: 0vh;
+  top: 9.6vh;
 }
 
 .tblUser {
@@ -32,7 +32,7 @@ code {
 .tblUser thead {
   z-index: 1000 !important;
   position: sticky;
-  top: 9.18vh;
+  top: 18.83vh;
   background-color: white !important;
 }
 
@@ -113,4 +113,17 @@ code {
 
 .tblAlbums th:nth-child(2) {
   width: 45% !important;
+}
+
+.navLink {
+  font-weight: 700;
+  font-size: large;
+  text-decoration: none;
+  color: wheat;
+  margin-right: 50px;
+}
+
+.navLink:hover {
+  text-decoration: none !important;
+  color: #ffc107 !important;
 }

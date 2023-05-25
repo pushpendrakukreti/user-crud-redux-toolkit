@@ -45,7 +45,7 @@ const Albums = () => {
         <div>
             {
                 <div className='tblUserWrapper'>
-                    <h3 className='bg-secondary p-3 mb-0 sticky text-white userHead'><b className='text-warning'>CRUD - Users App</b> (using Redux toolkit)</h3>
+                    <h3 className='bg-secondary p-3 mb-0 sticky text-white userHead'><b className='text-white'>Albums</b></h3>
                     <center>
                         <table className='tblUser tblAlbums bg-white table table-bordered table-striped'>
                             <thead>
